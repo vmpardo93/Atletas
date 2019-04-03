@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase que maneja la informacion y el movimiento de los atletas especificos.
  * @author fetec
  */
 public class Atleta extends Thread {
@@ -21,7 +21,13 @@ public class Atleta extends Thread {
     private String strRojo;
     private String strVerde;
     
-
+    /**
+     * Constuctor de la clase atleta que recible el equipo al que pertenece el 
+     * atleta, su respectiva posicion inicial y final.
+     * @param equipo
+     * @param posicion
+     * @param fin 
+     */
     public Atleta(Equipo equipo, int posicion, int fin) {
         this.equipo = equipo;
         this.posicion = posicion;

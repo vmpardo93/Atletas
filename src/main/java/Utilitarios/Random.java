@@ -6,11 +6,15 @@
 package Utilitarios;
 
 /**
- *
+ * Clase que sirve para generar un numero random de 0 a 3, no contiene parametros.
  * @author fetec
  */
 public class Random {
     
+    /**
+     * Devuelve un numero aleatorio de tipo integer del 0 al 3
+     * @return int
+     */
     public static int random(){
         double i=Math.random()*100;
         int j=(int) i;

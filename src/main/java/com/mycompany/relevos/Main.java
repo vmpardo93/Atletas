@@ -9,7 +9,8 @@ import Logica.Core;
 import Utilitarios.Random;
 
 /**
- *
+ * Clase que ejecuta los hilos contenidos en la clase core, no contiene ningun
+ * metodo o atributos, solo la instancia de la clase y la ejecucion de su meto unico.
  * @author fetec
  */
 public class Main {
