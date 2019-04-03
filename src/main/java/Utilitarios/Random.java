@@ -11,7 +11,7 @@ package Utilitarios;
  */
 public class Random {
     
-    public int random(){
+    public static int random(){
         double i=Math.random()*100;
         int j=(int) i;
         if(j<25){

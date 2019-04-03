@@ -5,6 +5,7 @@
  */
 package com.mycompany.relevos;
 
+import Logica.Core;
 import Utilitarios.Random;
 
 /**
@@ -15,10 +16,8 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Random r=new Random();
-        for(int i=0;i<10;i++){
-            System.out.println(r.random());
-        }
+        Core c=new Core();
+        c.inicio();
         
     }
     
