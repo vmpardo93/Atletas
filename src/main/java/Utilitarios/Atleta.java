@@ -33,11 +33,8 @@ public class Atleta extends Thread {
         this.posicion = posicion;
         this.fin = fin;
     }
-
-    @Override
-    public void run() {
-        if (posicion == 0) {
-            while (true) {
+    public void posicionCero(){
+        while (true) {
                 int pasoActual = avanzar(1);
                 if (pasoActual >= 33) {
                     equipo.setPosicionA1(33);
@@ -48,6 +45,34 @@ public class Atleta extends Thread {
                     break;
                 }
             }
+    }
+    public void posicionTreintaytres(){
+        while (true) {
+                int pasoActual = avanzar(2);
+                if (pasoActual >= 66) {
+                    equipo.setPosicionA2(66);
+                    synchronized (equipo) {
+                        equipo.notify();
+                    }
+                    break;
+                }
+            }
+    }
+    public void posicionSesentayseis(){
+        while (true) {
+                int pasoActual = avanzar(3);
+                if (pasoActual >= 100) {
+                    equipo.setPosicionA3(100);
+                    System.out.println("Gano equipo: "+equipo.getNombre());
+                    System.exit(0);
+                    break;
+                }
+            }
+    }
+    @Override
+    public void run() {
+        if (posicion == 0) {
+            posicionCero();
         } else {
             synchronized (equipo) {
                 try {
@@ -59,16 +84,7 @@ public class Atleta extends Thread {
 
         }
         if (posicion == 33) {
-            while (true) {
-                int pasoActual = avanzar(2);
-                if (pasoActual >= 66) {
-                    equipo.setPosicionA2(66);
-                    synchronized (equipo) {
-                        equipo.notify();
-                    }
-                    break;
-                }
-            }
+            posicionTreintaytres();
         } else {
             synchronized (equipo) {
                 try {
@@ -80,15 +96,7 @@ public class Atleta extends Thread {
 
         }
         if (posicion == 66) {
-            while (true) {
-                int pasoActual = avanzar(3);
-                if (pasoActual >= 100) {
-                    equipo.setPosicionA3(100);
-                    System.out.println("Gano equipo: "+equipo.getNombre());
-                    System.exit(0);
-                    break;
-                }
-            }
+            posicionSesentayseis();
         } else {
             synchronized (equipo) {
                 try {
@@ -99,16 +107,8 @@ public class Atleta extends Thread {
             }
         }
     }
-
-    public int avanzar(int numAtleta) {
-        try {
-            Thread.sleep(500);            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Atleta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int valorAvance = Random.random();
-        if (numAtleta == 1) {
-            equipo.setPosicionA1(equipo.getPosicionA1() + valorAvance);
+    public int avanceOne(int valorAvance){
+        equipo.setPosicionA1(equipo.getPosicionA1() + valorAvance);
             if(equipo.imprimir().contains("Azul")){
                 strAzul=equipo.imprimir();
             }else if(equipo.imprimir().contains("Verde")){
@@ -126,8 +126,8 @@ public class Atleta extends Thread {
                 System.out.println(strVerde);
             }            
             return equipo.getPosicionA1();
-        }
-        if (numAtleta == 2) {
+    }
+    public int avanceTwo(int valorAvance){
             equipo.setPosicionA2(equipo.getPosicionA2() + valorAvance);
             if(equipo.imprimir().contains("Azul")){
                 strAzul=equipo.imprimir();
@@ -146,8 +146,8 @@ public class Atleta extends Thread {
                 System.out.println(strVerde);
             }
             return equipo.getPosicionA2();
-        }
-        if (numAtleta == 3) {
+    }
+    public int avanceTree(int valorAvance){
             equipo.setPosicionA3(equipo.getPosicionA3() + valorAvance);
             if(equipo.imprimir().contains("Azul")){
                 strAzul=equipo.imprimir();
@@ -167,6 +167,22 @@ public class Atleta extends Thread {
             }
             
             return equipo.getPosicionA3();
+    }
+    public int avanzar(int numAtleta) {
+        try {
+            Thread.sleep(500);            
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Atleta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int valorAvance = Random.random();
+        if (numAtleta == 1) {
+            return avanceOne(valorAvance);
+        }
+        if (numAtleta == 2) {
+            return avanceTwo(valorAvance);
+        }
+        if (numAtleta == 3) {
+            return avanceTree(valorAvance);
         }
         return 0;
     }
