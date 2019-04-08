@@ -8,6 +8,7 @@ package Pruebas;
 import Logica.Core;
 import Utilitarios.Atleta;
 import Utilitarios.Equipo;
+import Utilitarios.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -49,12 +50,32 @@ public class Pruebas {
     // @Test
     // public void hello() {}
     @Test
-    public void avanzar() {
+    public void testAvanzar() {
         Equipo equipo1 = new Equipo("Azul", 0, 100);
         Atleta atleta = new Atleta(equipo1, 0, 33);
-
+        
         int resultadoAvanzar = atleta.avanzar(1);
         int resultadoEsperado = 2;
         assertEquals(resultadoEsperado, resultadoAvanzar);
+    }
+    @Test
+    public void testRandom(){
+        //Random ram=new Random();
+        int resultado = Random.random();
+        boolean valor = false;
+        if(resultado==0){
+            valor = true;
+        }
+        if(resultado==1){
+            valor = true;
+        }
+        if(resultado==2){
+            valor = true;
+        }
+        if(resultado==3){
+            valor = true;
+        }
+        boolean resultadoEsperado =true;
+        assertEquals(resultadoEsperado, valor);
     }
 }
