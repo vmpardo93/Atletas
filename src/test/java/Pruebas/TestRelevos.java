@@ -20,10 +20,10 @@ import static org.junit.Assert.*;
  *
  * @author Darkgrey93
  */
-public class Pruebas {
+public class TestRelevos {
     Core core = new Core();
     
-    public Pruebas() {
+    public TestRelevos() {
     }
     
     @BeforeClass
@@ -53,10 +53,16 @@ public class Pruebas {
     public void testAvanzar() {
         Equipo equipo1 = new Equipo("Azul", 0, 100);
         Atleta atleta = new Atleta(equipo1, 0, 33);
-        
         int resultadoAvanzar = atleta.avanzar(1);
-        int resultadoEsperado = 2;
-        assertEquals(resultadoEsperado, resultadoAvanzar);
+        boolean valor = false;
+        if(resultadoAvanzar==1){
+            valor = true;
+        }
+        if(resultadoAvanzar==2){
+            valor = true;
+        }
+        boolean resultadoEsperado = true;
+        assertEquals(resultadoEsperado, valor);
     }
     @Test
     public void testRandom(){
