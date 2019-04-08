@@ -35,39 +35,39 @@ public class Atleta extends Thread {
     }
     public void posicionCero(){
         while (true) {
-                int pasoActual = avanzar(1);
-                if (pasoActual >= 33) {
-                    equipo.setPosicionA1(33);
-                    synchronized (equipo) {
-                        equipo.notifyAll();
-                        posicion = 33;
-                    }
-                    break;
+            int pasoActual = avanzar(1);
+            if (pasoActual >= 33) {
+                equipo.setPosicionA1(33);
+                synchronized (equipo) {
+                    equipo.notifyAll();
+                    posicion = 33;
                 }
+                break;
             }
+        }
     }
     public void posicionTreintaytres(){
         while (true) {
-                int pasoActual = avanzar(2);
-                if (pasoActual >= 66) {
-                    equipo.setPosicionA2(66);
-                    synchronized (equipo) {
-                        equipo.notify();
-                    }
-                    break;
+            int pasoActual = avanzar(2);
+            if (pasoActual >= 66) {
+                equipo.setPosicionA2(66);
+                synchronized (equipo) {
+                    equipo.notify();
                 }
+                break;
             }
+        }
     }
     public void posicionSesentayseis(){
         while (true) {
-                int pasoActual = avanzar(3);
-                if (pasoActual >= 100) {
-                    equipo.setPosicionA3(100);
-                    System.out.println("Gano equipo: "+equipo.getNombre());
-                    System.exit(0);
-                    break;
-                }
+            int pasoActual = avanzar(3);
+            if (pasoActual >= 100) {
+                equipo.setPosicionA3(100);
+                System.out.println("Gano equipo: "+equipo.getNombre());
+                System.exit(0);
+                break;
             }
+        }
     }
     @Override
     public void run() {
@@ -81,7 +81,6 @@ public class Atleta extends Thread {
                     Logger.getLogger(Atleta.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
         }
         if (posicion == 33) {
             posicionTreintaytres();
@@ -93,7 +92,6 @@ public class Atleta extends Thread {
                     Logger.getLogger(Atleta.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
         }
         if (posicion == 66) {
             posicionSesentayseis();
@@ -109,64 +107,63 @@ public class Atleta extends Thread {
     }
     public int avanceOne(int valorAvance){
         equipo.setPosicionA1(equipo.getPosicionA1() + valorAvance);
-            if(equipo.imprimir().contains("Azul")){
-                strAzul=equipo.imprimir();
-            }else if(equipo.imprimir().contains("Verde")){
-                strVerde=equipo.imprimir();
-            }else if(equipo.imprimir().contains("Rojo")){
-                strRojo=equipo.imprimir();
-            }
-            if(strAzul!=null){
-                System.out.println(strAzul);
-            }
-            if(strRojo!=null){
-                System.out.println(strRojo);
-            }
-            if(strVerde!=null){
-                System.out.println(strVerde);
-            }            
-            return equipo.getPosicionA1();
+        if(equipo.imprimir().contains("Azul")){
+            strAzul=equipo.imprimir();
+        }else if(equipo.imprimir().contains("Verde")){
+            strVerde=equipo.imprimir();
+        }else if(equipo.imprimir().contains("Rojo")){
+            strRojo=equipo.imprimir();
+        }
+        if(strAzul!=null){
+            System.out.println(strAzul);
+        }
+        if(strRojo!=null){
+            System.out.println(strRojo);
+        }
+        if(strVerde!=null){
+            System.out.println(strVerde);
+        }            
+        return equipo.getPosicionA1();
     }
     public int avanceTwo(int valorAvance){
-            equipo.setPosicionA2(equipo.getPosicionA2() + valorAvance);
-            if(equipo.imprimir().contains("Azul")){
-                strAzul=equipo.imprimir();
-            }else if(equipo.imprimir().contains("Verde")){
-                strVerde=equipo.imprimir();
-            }else if(equipo.imprimir().contains("Rojo")){
-                strRojo=equipo.imprimir();
-            }
-            if(strAzul!=null){
-                System.out.println(strAzul);
-            }
-            if(strRojo!=null){
-                System.out.println(strRojo);
-            }
-            if(strVerde!=null){
-                System.out.println(strVerde);
-            }
-            return equipo.getPosicionA2();
+        equipo.setPosicionA2(equipo.getPosicionA2() + valorAvance);
+        if(equipo.imprimir().contains("Azul")){
+            strAzul=equipo.imprimir();
+        }else if(equipo.imprimir().contains("Verde")){
+            strVerde=equipo.imprimir();
+        }else if(equipo.imprimir().contains("Rojo")){
+            strRojo=equipo.imprimir();
+        }
+        if(strAzul!=null){
+            System.out.println(strAzul);
+        }
+        if(strRojo!=null){
+            System.out.println(strRojo);
+        }
+        if(strVerde!=null){
+            System.out.println(strVerde);
+        }
+        return equipo.getPosicionA2();
     }
     public int avanceTree(int valorAvance){
-            equipo.setPosicionA3(equipo.getPosicionA3() + valorAvance);
-            if(equipo.imprimir().contains("Azul")){
-                strAzul=equipo.imprimir();
-            }else if(equipo.imprimir().contains("Verde")){
-                strVerde=equipo.imprimir();
-            }else if(equipo.imprimir().contains("Rojo")){
-                strRojo=equipo.imprimir();
-            }
-            if(strAzul!=null){
-                System.out.println(strAzul);
-            }
-            if(strRojo!=null){
-                System.out.println(strRojo);
-            }
-            if(strVerde!=null){
-                System.out.println(strVerde);
-            }
-            
-            return equipo.getPosicionA3();
+        equipo.setPosicionA3(equipo.getPosicionA3() + valorAvance);
+        if(equipo.imprimir().contains("Azul")){
+            strAzul=equipo.imprimir();
+        }else if(equipo.imprimir().contains("Verde")){
+            strVerde=equipo.imprimir();
+        }else if(equipo.imprimir().contains("Rojo")){
+            strRojo=equipo.imprimir();
+        }
+        if(strAzul!=null){
+            System.out.println(strAzul);
+        }
+        if(strRojo!=null){
+            System.out.println(strRojo);
+        }
+        if(strVerde!=null){
+            System.out.println(strVerde);
+        }
+        return equipo.getPosicionA3();
     }
     public int avanzar(int numAtleta) {
         try {
